@@ -22,19 +22,27 @@
         row-gap: 10px;
     }
 
-    .cp-header article {
-        background: linear-gradient(to right, #2F3542, #434b5d);
-        padding: 15px 20px;
-        border-radius: 16px;
-        color: white;
-    }
-
     .cp-fast-info {
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: 600;
         font-size: 1.5rem;
+        background: linear-gradient(to right, #2F3542, #434b5d);
+        padding: 15px 20px;
+        border-radius: 16px;
+        color: white;
+    }
+
+    .cp-body {
+        display: grid;
+        grid-template-columns: ;
+        grid-template-rows: ;
+        grid-template-areas: 
+        "last-entries . . ."
+        "last-entries . . .";
+        column-gap: 20px;
+        row-gap: 10px;
     }
 
 </style>
@@ -62,5 +70,34 @@
         </article>
 
         
+    </section>
+
+    <section class="cp-body" style="grid-area: cp-body;">
+        <article id="last-entries" class="cp-body-fast-info">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Hora</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="/Dashboard/assets/images/foto_admin.jpg" alt="Foto" width="35px" style="border-radius: 50%;"></td>
+                        <td>Sebastian</td>
+                        <td>Pereira</td>
+                        <td>08:13 AM</td>
+                    </tr>
+                    <tr>
+                        <td><img src="/Dashboard/assets/images/foto_admin.jpg" alt="Foto" width="35px" style="border-radius: 50%;"></td>
+                        <td>Camilo</td>
+                        <td>Mori</td>
+                        <td>07:52 AM</td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
     </section>
 </main>
