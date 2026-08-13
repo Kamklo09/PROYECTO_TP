@@ -63,7 +63,7 @@ document.getElementById('login-form').addEventListener('submit', function (event
     const dominio = selectDominio.options[selectDominio.selectedIndex].text;
 
     // CASO 1: Acceso rápido del Admin
-    if (inputIngresado === 'admin' && passwordIngresado === 'admin123') {
+    if (inputIngresado === 'Admin' && passwordIngresado === '12345') {
         window.location.href = '../Dashboard/index.html';
         return;
     }
