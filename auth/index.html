@@ -7,91 +7,107 @@
         <link rel="stylesheet" href="styles/main.css" />
         <link rel="icon" type="image/x-icon" href="../LogoSAS.ico?v=1">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-            rel="stylesheet"
-        />
-    </head>
-    <body>
-        <nav>
-            <div class="nav-name-proyect nav-elements">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>S.A.S - Autenticación</title>
+
+    <!--Enlaces-->
+
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!--Navegador-->
+    <nav>
+        <div class="nav-name-proyect nav-elements">
             <h3>School Attendance System</h3>
-            </div>
-            <div class="nav-links nav-elements">
-                <a href="../landing/index.html">Inicio</a>
-                <a href="../landing/index.html#funcionalidades">Funciones</a>
-                <a href="">Contacto</a>
-            </div>
+        </div>
 
-            <div class="nav-name-group nav-elements">
-                <h4>White Palace Co.</h4>
-            </div>
-            
-        </nav>
+        <div class="nav-links nav-elements">
+            <a href="../landing/index.html">Inicio</a>
+            <a href="../landing/index.html#funcionalidades">Funciones</a>
+            <a href="">Contacto</a>
+        </div>
 
-        <main class="container">
-            <section id="form-register" class="auth-box hidden">
-                <h2>Registrarse</h2>
-                <form action="#" id="register-form">
+        <div class="nav-name-group nav-elements">
+            <h4>White Palace Co.</h4>
+        </div>
 
-                    <div class="input-email">
-                        <label for="email"></label>
-                        <input type="text" id="email" placeholder="Correo Electronico" />
-                        
-                        <select name="domain-email" id="domain">
-                            <option value="">@alumnos.sip.cl</option>
-                            <option value="">@sip.cl</option>
-                        </select>
-                    </div>
+    </nav>
 
-                    <label for="password"></label>
-                    <input type="password" id="password" placeholder="Contraseña"/>
+    <!--Contenido Principal-->
 
-                    <label for="confirm-password"></label>
-                    <input type="password" id="confirm-password" placeholder="Confirmar Contraseña" />
+    <main class="container">
+        <section id="form-register" class="auth-box hidden">
+            <h2>Registrarse</h2>
+            <form action="#" id="register-form">
 
-                    <div class="input-submit">
-                    <input type="submit" value="Crear Cuenta" />
-                    </div>
-                </form>
-                
-                <a href="" id="already-have-account" class="switch-text">¿Ya tienes una cuenta?</a>
-            </section>
+                <div class="input-email">
+                    <label for="email"></label>
+                    <input type="text" id="email" placeholder="Correo Electrónico" />
 
-            <section id="form-login" class="auth-box ">
-                <h2>Iniciar Sesión</h2>
-                <form action="#" id="login-form">
-
-                    <div class="input-email">
-                        <label for="email"></label>
-                        <input type="text" id="email" placeholder="Correo Electronico" pattern="[^@]+"/>
-                        
-                        <select name="domain-email" id="domain">
-                            <option value="">@alumnos.sip.cl</option>
-                            <option value="">@sip.cl</option>
-                        </select>
-                    </div>
-
-                    <label for="password"></label>
-                    <input type="password" id="password" placeholder="Contraseña"/>
-
-                    <div class="input-submit">
-                    <input type="submit" value="Iniciar Sesión"/>
-                    </div>
-                </form>
-
-                <a href="" id="not-have-account" class="switch-text">¿No tienes una cuenta?</a>
-            </section>
-
-            <section class="disabled hidden">
-                <div>
-                    <h5>Deshabilitado</h5>
+                    <select name="domain-email" id="domain">
+                        <option value="">@alumnos.sip.cl</option>
+                        <option value="">@sip.cl</option>
+                    </select>
                 </div>
-            </section>
-        </main>
 
-        <script src="script.js""></script>
-    </body>
+                <label for="password"></label>
+                <input type="password" id="password" placeholder="Contraseña" />
+
+                <label for="confirm-password"></label>
+                <input type="password" id="confirm-password" placeholder="Confirmar Contraseña" />
+
+                <div class="input-submit">
+                    <input type="submit" value="Crear Cuenta" />
+                </div>
+            </form>
+
+            <a href="" id="already-have-account" class="switch-text">¿Ya tienes una cuenta?</a>
+        </section>
+
+        <section id="form-login" class="auth-box ">
+            <h2>Iniciar Sesión</h2>
+            <form action="#" id="login-form">
+
+                <div class="input-email">
+                    <label for="email"></label>
+                    <!-- Actualizacion para indicar el uso de admin -->
+                    <input type="text" id="email" placeholder="Correo o Usuario" pattern="[^@]+" />
+
+                    <select name="domain-email" id="domain">
+                        <option value="">@alumnos.sip.cl</option>
+                        <option value="">@sip.cl</option>
+                    </select>
+                </div>
+
+                <label for="password"></label>
+                <input type="password" id="password" placeholder="Contraseña" />
+
+                <div class="input-submit">
+                    <input type="submit" value="Iniciar Sesión" />
+                </div>
+            </form>
+
+            <!--Creacion cuenta-->
+
+            <a href="" id="not-have-account" class="switch-text">¿No tienes una cuenta?</a>
+        </section>
+
+        <section class="disabled hidden">
+            <div>
+                <h5>Deshabilitado</h5>
+            </div>
+        </section>
+    </main>
+
+    <!-- Script corregido -->
+    <script src="script.js"></script>
+</body>
+
 </html>
