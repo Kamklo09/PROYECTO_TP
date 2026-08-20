@@ -1,5 +1,7 @@
 <style>
-
+    main {
+        padding: 20px;
+    }
 
     .controlpanel-container {
         display: grid;
@@ -11,13 +13,15 @@
         "cp-body cp-body cp-body"
         "cp-body cp-body cp-body" ;
         padding: 0px 20px;
+        row-gap: 20px;
+        max-height: 100%;
     }
 
 
 
     .cp-header {
         display: grid;
-        grid-template-columns: repeat(4, auto);
+        grid-template-columns: repeat(2, 1fr) repeat(2, 0.5fr);
         grid-template-rows: repeat(2, auto);
         grid-template-areas: 
         "date   attendance   entries    entries"
@@ -26,24 +30,102 @@
         row-gap: 10px;
     }
 
-
-
-    .cp-header article {
-        background: linear-gradient(to right, #2F3542, #434b5d);
-        padding: 15px 20px;
-        border-radius: 16px;
-        color: white;
-    }
-
-
-
     .cp-fast-info {
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: 600;
         font-size: 1.5rem;
+        background: linear-gradient(to right, #2F3542, #434b5d);
+        padding: 15px 20px;
+        border-radius: 16px;
+        color: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        flex-direction: column;
+        text-align: center;
     }
+
+    .cp-body {
+        display: grid;
+        grid-template-columns: 2.1fr 0.5fr 0.5fr;
+        grid-template-rows: repeat(2, auto);
+        grid-template-areas: 
+        "last-entries last-entries . ."
+        "last-entries last-entries . .";
+        column-gap: 20px;
+        row-gap: 10px;
+    }
+
+    /* Contenedor principal de la sección de últimas entradas */
+    .cp-body-fast-info {
+        background: linear-gradient(135deg, #2F3542, #3a4151);
+        border-radius: 16px;
+        padding: 20px;
+        color: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+    }
+
+    /* Estructura general de la tabla */
+    .cp-body-fast-info table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        font-family: inherit;
+    }
+
+    /* Cabecera de la tabla */
+    .cp-body-fast-info thead tr {
+        border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .cp-body-fast-info th {
+        padding: 12px 15px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+
+    }
+
+    /* Filas y celdas */
+    .cp-body-fast-info tbody tr {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: white;
+    }
+
+    .cp-body-fast-info tbody tr:last-child {
+        border-bottom: none;
+    }
+
+    .cp-body-fast-info td {
+        padding: 12px 15px;
+        vertical-align: middle;
+        font-size: 0.95rem;
+    }
+
+    /* Estilo para las imágenes de perfil */
+    .cp-body-fast-info td img {
+        display: block;
+        width: 38px;
+        height: 38px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    #last-entries {
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-color: #4a5468 #242833;
+        scrollbar-width: none;
+    }
+
+    .cp-fast-info span {
+        font-weight: 400;
+        font-size: 1rem;
+    }
+
 
 </style>
 
@@ -52,23 +134,78 @@
 <!--Contenido principal-->
 <main class="controlpanel-container"> 
     <section class="cp-header" style="grid-area: cp-header;">
-
         <article id="date" class="cp-fast-info" style="grid-area: date;">
             Cargando fecha...
         </article>
 
         <article id="attendance" class="cp-fast-info" style="grid-area: attendance;">
-            cargando asistencia...
+            <h2>1000</h2>
+            <span>Estudiantes Registrados</span>
         </article>
 
         <article id="entries" class="cp-fast-info" style="grid-area: entries;">
-            cargando entradas...
+            <h2>6</h2>
+            <span>Entradas registradas</span>
         </article>
 
         <article id="exits" class="cp-fast-info" style="grid-area: exits;">
-            cargando salidas...
+            <h2>1</h2>
+            <span>Salida registrada</span>
         </article>
 
         
+    </section>
+
+    <section class="cp-body" style="grid-area: cp-body;">
+        <article id="last-entries" class="cp-body-fast-info">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Hora entrada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="" alt="Foto" width="35px" style="border-radius: 50%;"></td>
+                        <td>Sebastian</td>
+                        <td>Pereira</td>
+                        <td>08:13 AM</td>
+                    </tr>
+                    <tr>
+                        <td><img src="" alt="Foto" width="35px" style="border-radius: 50%;"></td>
+                        <td>Camilo</td>
+                        <td>Mori</td>
+                        <td>07:52 AM</td>
+                    </tr>
+                    <tr>
+                        <td><img src="" alt="Foto" width="35px" style="border-radius: 50%;"></td>
+                        <td>Manuel</td>
+                        <td>Ibañez</td>
+                        <td>07:52 AM</td>
+                    </tr>
+                    <tr>
+                        <td><img src="" alt="Foto" width="35px" style="border-radius: 50%;"></td>
+                        <td>Felipe</td>
+                        <td>Gutierrez</td>
+                        <td>07:52 AM</td>
+                    </tr>
+                    <tr>
+                        <td><img src="" alt="Foto" width="35px" style="border-radius: 50%;"></td>
+                        <td>Dangelo</td>
+                        <td>Pinto</td>
+                        <td>07:52 AM</td>
+                    </tr>
+                    <tr>
+                        <td><img src="" alt="Foto" width="35px" style="border-radius: 50%;"></td>
+                        <td>Kenny</td>
+                        <td>Muñoz</td>
+                        <td>07:52 AM</td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
     </section>
 </main>

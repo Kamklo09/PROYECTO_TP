@@ -1,82 +1,182 @@
 <style>
+    main {
+        width: 100%;
+        height: calc(100% - 3rem); /* Ocupa el alto restante */
+        overflow-x: auto; /* Evita el desbordamiento horizontal en pantallas pequeñas */
+        background: #ffffff;
+        border-radius: 8px;
+    }
+
+    /* Tabla adaptable */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    thead th {
+        background-color: #f8fafc;
+        color: #64748b;
+        font-weight: 600;
+        padding: 0.75rem 1rem;
+        border-bottom: 2px solid #e2e8f0;
+    }
+
+    tbody tr {
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    tbody tr:hover {
+        background-color: #f1f5f9;
+    }
+
+    tbody td {
+        padding: 0.75rem 1rem;
+        vertical-align: middle;
+    }
+
+    tbody tr td button {
+        font-size: 20px;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+
+    /* Imágenes de usuario */
     table tbody tr img {
         border-radius: 50%;
         width: 35px;
         height: 35px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #64748b;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        font-size: 0.875rem;
+        color: #64748b;
+        margin-bottom: 0.25rem;
+    }
+
+    .form-group input {
+        padding: 0.5rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 4px;
+        font-size: 1rem;
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 1.5rem;
+    }
+
+    .btn-cancel {
+        background: #e2e8f0;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .btn-save {
+        background: #2563eb;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
     }
 </style>
 
-<!--Estilo de imagen-->
-    <style>
-        table tbody tr img {
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-        }
-    </style>
+<main>
+    <table>
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Curso</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Manuel" /></td>
+                <td>Manuel Elias</td>
+                <td>Ibañez Silvestre</td>
+                <td>3° Medio B</td>
+                <td>
+                    <button class="delete-user"><i class="bi bi-trash3-fill"></i></button>
+                    <button class="edit-user"><i class="bi bi-gear-fill"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Camilo" /></td>
+                <td>Camilo Antonio</td>
+                <td>Vasquez Mori</td>
+                <td>3° Medio B</td>
+                <td>
+                    <button class="delete-user"><i class="bi bi-trash3-fill"></i></button>
+                    <button class="edit-user"><i class="bi bi-gear-fill"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Sebastian" /></td>
+                <td>Sebastian Andres</td>
+                <td>Pereira Ramirez</td>
+                <td>3° Medio B</td>
+                <td>
+                    <button class="delete-user"><i class="bi bi-trash3-fill"></i></button>
+                    <button class="edit-user"><i class="bi bi-gear-fill"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Dangelo" /></td>
+                <td>Dangelo Miguel Angel</td>
+                <td>Pinto Hernandez</td>
+                <td>3° Medio B</td>
+                <td>
+                    <button class="delete-user"><i class="bi bi-trash3-fill"></i></button>
+                    <button class="edit-user"><i class="bi bi-gear-fill"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Felipe" /></td>
+                <td>Felipe</td>
+                <td>Gutierrez</td>
+                <td>3° Medio B</td>
+                <td>
+                    <button class="delete-user"><i class="bi bi-trash3-fill"></i></button>
+                    <button class="edit-user"><i class="bi bi-gear-fill"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Kenny" /></td>
+                <td>Kenny</td>
+                <td>Muñoz Quiroz</td>
+                <td>3° Medio B</td>
+                <td>
+                    <button class="delete-user"><i class="bi bi-trash3-fill"></i></button>
+                    <button class="edit-user"><i class="bi bi-gear-fill"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-<!--Encabezado-->
-
-    <header>
-        <h1>Usuarios</h1>
-    </header>
-
-<!--Contenido principal-->
-
-    <main>
-        <table>
-            <thead>
-                <tr>
-
-<!--Datos de usuarios-->
-
-                    <th>Foto</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Curso</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Manuel"></td>
-                    <td>Manuel</td>
-                    <td>Ibañez</td>
-                    <td>3° Medio B</td>
-                </tr>
-                <tr>
-                    <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Camilo"></td>
-                    <td>Camilo</td>
-                    <td>Mori</td>
-                    <td>3° Medio B</td>
-                </tr>
-                <tr>
-                    <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Sebastian"></td>
-                    <td>Sebastian</td>
-                    <td>Pereira</td>
-                    <td>3° Medio B</td>
-                </tr>
-                <tr>
-                    <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Dangelo"></td>
-                    <td>Dangelo</td>
-                    <td>Pinto</td>
-                    <td>3° Medio B</td>
-                </tr>
-                <tr>
-                    <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Felipe"></td>
-                    <td>Felipe</td>
-                    <td>Gutierrez</td>
-                    <td>3° Medio B</td>
-                </tr>
-                <tr>
-                    <td><img src="../assets/images/4bb2bb45bd21bb55053cebbd672b85f2 (1).jpg" alt="Foto de Kenny"></td>
-                    <td>Kenny</td>
-                    <td>Muñoz</td>
-                    <td>3° Medio B</td>
-                </tr>
-            </tbody>
-        </table>
-    </main>
-
-</body>
-</html>
-
+    
+</main>
