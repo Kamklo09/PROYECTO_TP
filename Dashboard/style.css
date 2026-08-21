@@ -177,6 +177,17 @@ aside {
     display: block;
 }
 
+/* Arreglo para evitar que se cierre el menú al bajar el cursor (puente) */
+.nav-top-main .dropdown-content::before {
+    content: "";
+    position: absolute;
+    top: -15px; /* Sube para cubrir el espacio vacío */
+    left: 0;
+    width: 100%;
+    height: 15px; /* Grosor del puente */
+    background-color: transparent; 
+}
+
 /* Efecto al pasar el cursor */
 .nav-top-main button:hover {
     background-color: #f8fafc;
