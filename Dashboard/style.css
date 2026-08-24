@@ -19,72 +19,63 @@ button {
     background: none;
 }
 
-
-
 /* ------------------------------------------------------*/
 /*  =========° Cuerpo principal de la pagina °=========  */
 /* ------------------------------------------------------*/
 
 body {
-    background-color: #F1F5F9;
+    background-color: #f1f5f9;
     width: 100%;
     height: 100vh;
     display: grid;
-    grid-template-columns: 250px 30px repeat(4, 1fr) 30px;
+    grid-template-columns: 300px 30px repeat(4, 1fr) 30px;
     grid-template-rows: 20px auto 20px 1fr 1fr 30px;
-    grid-template-areas: 
-    "navbar . . . . . ."
-    "navbar . nav-top-main nav-top-main nav-top-main nav-top-main ."
-    "navbar . . . . . ."
-    "navbar . container-views container-views container-views container-views ."
-    "navbar . container-views container-views container-views container-views ."
-    "navbar . . . . . .";
+    grid-template-areas:
+        "navbar . . . . . ."
+        "navbar . nav-top-main nav-top-main nav-top-main nav-top-main ."
+        "navbar . . . . . ."
+        "navbar . container-views container-views container-views container-views ."
+        "navbar . container-views container-views container-views container-views ."
+        "navbar . . . . . .";
 }
-
 
 /* ------------------------------------------------------*/
 /*  ===========° Contenedor de vistas [MAIN] °========== */
 /* ------------------------------------------------------*/
 
-
 #container-views {
     grid-area: container-views;
 }
-
-
-
-
-
 
 /* ------------------------------------------------------*/
 /*  ==============° Barra de navegacion °=============== */
 /* ------------------------------------------------------*/
 
-
-
-aside, .aside-links, .aside-title, .nav-links {
+aside,
+.aside-links,
+.aside-title,
+.nav-links {
     display: flex;
     flex-direction: column;
 }
 
 .aside-title {
     flex-direction: row;
-    
 }
 
 .aside-links {
-    gap: 10%;
+    gap: 2rem;
 }
 
 .aside-title span {
     color: white;
-    font-size: .9rem;
+    font-size: 0.9rem;
     font-weight: 600;
 }
 
 aside {
     grid-area: navbar;
-    background: linear-gradient(to bottom, #2F3542, #434b5d);
+    background: linear-gradient(to bottom, #2f3542, #434b5d);
     padding: 30px 20px;
     gap: 10%;
 }
@@ -93,31 +84,86 @@ aside {
     flex-direction: row;
     gap: 20px;
     background-color: rgb(68, 72, 88);
-    padding: 10px 20px;
+    padding: 15px 20px;
     border-radius: 8px;
 }
-
 
 .nav-top-main {
     grid-area: nav-top-main;
     display: flex;
     justify-content: space-between;
-    padding: 10px 25px;
-    background-color: #e2e3e4;
+    padding: 15px 25px;
     border-radius: 22px;
 }
 
-.nav-top-main button img {
-    border-radius: 50%;
-}
-
-.nav-top-main button span {
-    text-transform: uppercase;
+.title-main h1 {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
     font-weight: 600;
+    color: #0f172a;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 6px;
 }
 
+.title-main h1::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 24px;
+    height: 3px;
+    background-color: #242833;
+    border-radius: 2px;
+}
+
+/* Botón de Perfil */
 .nav-top-main button {
     display: flex;
     align-items: center;
     gap: 10px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 6px 14px 6px 6px;
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Efecto al pasar el cursor */
+.nav-top-main button:hover {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+.nav-top-main button img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #e2e8f0;
+}
+
+.nav-top-main button span {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #334155;
+    letter-spacing: 0.3px;
+}
+
+#container-views {
+    opacity: 1;
+    transform: scale(1);
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+#container-views.fade-out {
+    opacity: 0;
+    transform: scale(0.98);
 }
