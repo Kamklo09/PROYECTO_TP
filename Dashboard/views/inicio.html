@@ -1,7 +1,5 @@
 <style>
-    main {
-        padding: 20px;
-    }
+
 
     .controlpanel-container {
         display: grid;
@@ -17,6 +15,8 @@
         max-height: 100%;
     }
 
+
+
     .cp-header {
         display: grid;
         grid-template-columns: repeat(2, 1fr) repeat(2, 0.5fr);
@@ -27,6 +27,17 @@
         column-gap: 20px;
         row-gap: 10px;
     }
+
+
+
+    .cp-header article {
+        background: linear-gradient(to right, #2F3542, #434b5d);
+        padding: 15px 20px;
+        border-radius: 16px;
+        color: white;
+    }
+
+
 
     .cp-fast-info {
         display: flex;
@@ -129,7 +140,7 @@
 
 
 
-
+<!--Contenido principal-->
 <main class="controlpanel-container"> 
     <section class="cp-header" style="grid-area: cp-header;">
         <article id="date" class="cp-fast-info" style="grid-area: date;">
@@ -153,6 +164,8 @@
 
         
     </section>
+
+<!--Registros de estudiantes-->
 
     <section class="cp-body" style="grid-area: cp-body;">
         <article id="last-entries" class="cp-body-fast-info">
