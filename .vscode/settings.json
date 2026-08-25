@@ -1,3 +1,4 @@
 {
-    "livePreview.defaultPreviewPath": "/Registro SAS/index.html"
+    "livePreview.defaultPreviewPath": "/Registro SAS/index.html",
+    "liveServer.settings.port": 5503
 }
