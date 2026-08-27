@@ -1,3 +1,6 @@
+/* ==========================================================
+   1. BASE Y RESET
+   ========================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -6,43 +9,248 @@
 
 body {
     background-color: #F1F5F9;
-    width: 100vw;
-    height: 100vh;
+    font-family: "Open Sans", sans-serif;
+    color: #475569;
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: Poppins;
-    color: white;
+h1, h2 {
+    font-family: "Poppins", sans-serif;
     cursor: default;
 }
 
-h2 {
-    color: #1E293B;
-    font-size: 26px;
+a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+/* ==========================================================
+   2. NAVEGACIÓN (NAV)
+   ========================================================== */
+h3, h4 {
+    cursor: default;
 }
 
 h3 {
-    color: #475569;
+    color: #E2E8F0;
+    font-family: "Open Sans";
+    font-weight: 600;
+    font-size: 14px;
 }
 
 h4 {
-    color: #10B981;
-}
-
-p, a, button {
+    color: #94A3B8;
     font-family: "Open Sans";
-    text-decoration: none;
+    font-weight: 600;
+    font-size: 11px;
 }
 
-p {
-    cursor: default;
+nav {
+    background-color: #2F3542;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 10px 20px;
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
-button {
-    cursor: pointer;
-    border: none;
+.nav-links {
+    display: flex;
+    gap: 30px;
+    justify-content: space-around;
+}
+
+.nav-links a {
+    position: relative; /* <-- ESTO ES LO QUE TE FALTA */
+    font-size: 16px;
+    transition: font-size 0.6s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #D48800;
+    transition: width 0.3s ease;
+}
+
+/* Regla necesaria para desplegar la línea al hacer hover */
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-elements {
+    width: 300px;
+}
+
+.nav-name-group {
+    text-align: right;
+}
+
+.nav-name-group h4 {
+    color: #Dadee4;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+
+/* ==========================================================
+   3. ESTRUCTURA Y CABECERA DE SECCIÓN
+   ========================================================== */
+main {
+    padding: 110px 4% 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+main section:first-child {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+main h1 {
+    font-size: 2.4rem;
+    color: #0B1B3D;
+    display: inline-block;
+}
+
+main h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #727272;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* ==========================================================
+   4. GRID Y TARJETAS (ARTICLES)
+   ========================================================== */
+main section:nth-child(2) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+article {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px 22px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabecera centrada de la tarjeta */
+article h2,
+article > span {
+    text-align: center;
+    margin: 0 auto;
+}
+
+article h2 {
+    font-size: 1.5rem;
+    color: #1E293B;
+}
+
+article > span:nth-of-type(1) {
+    display: inline-block;
+    background: rgba(212, 136, 0, 0.1);
+    color: #D48800;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin: 6px auto 8px;
+    width: fit-content;
+}
+
+article > span:nth-of-type(2) {
+    display: inline-block;
+    background: rgba(0, 82, 204, 0.08);
+    color: #0052CC;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+}
+
+/* Lista interna */
+article div {
+    flex-grow: 1;
+}
+
+article ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+article li {
+    font-size: 0.88rem;
+    font-weight: 600;
+    border-bottom: 1px dashed #E2E8F0;
+    padding-bottom: 10px;
+}
+
+article li:last-child {
+    border-bottom: none;
+}
+
+article li span {
+    display: block;
+    font-weight: 400;
+    color: #64748B;
+    margin-top: 2px;
+}
+
+/* ==========================================================
+   5. RESPONSIVE
+   ========================================================== */
+@media (max-width: 1024px) {
+    main section:nth-child(2) {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-name-proyect, .nav-name-group {
+    display: none; 
+    }
+
+    nav {
+    justify-content: center;
+    }
+
+    main {
+        padding: 90px 20px 40px;
+    }
+
+    main h1 {
+        font-size: 1.8rem;
+    }
 }
