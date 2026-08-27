@@ -34,6 +34,7 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 1;
 }
 
 .nav-links {
@@ -43,12 +44,25 @@ nav {
 }
 
 .nav-links a {
+    position: relative; /* <-- ESTO ES LO QUE TE FALTA */
     font-size: 16px;
     transition: font-size 0.6s ease;
 }
 
-.nav-links a:hover {
-    font-size: 18px;
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #D48800;
+    transition: width 0.3s ease;
+}
+
+/* Regla necesaria para desplegar la línea al hacer hover */
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 .nav-elements {
@@ -57,6 +71,12 @@ nav {
 
 .nav-name-group {
     text-align: right;
+}
+
+.nav-name-group h4 {
+    color: #Dadee4;
+    font-size: 13px;
+    font-weight: 500;
 }
 
 @media (max-width: 768px) {
