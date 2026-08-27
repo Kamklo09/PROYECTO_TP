@@ -1,213 +1,241 @@
-<style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
 
-    main {
-        height: 100%;
-        width: 100%;
-        overflow-y: scroll;
-        scrollbar-width: none;
-    }
+    <style>
 
-    header {
-        background-color: white;
-        padding: 25px;
-        border-radius: 12px;
-        margin-bottom: 25px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    header p {
-        color: #777;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f4f7;
+            color: #333;
+        }
 
-    .tarjetas {
-        display: flex;
-        gap: 20px;
-        margin-bottom: 25px;
-    }
+        main {
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+            scrollbar-width: none;
+        }
 
-    .tarjetas article {
-        background-color: white;
-        width: 25%;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-    }
+        .tarjetas {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
 
-    .tarjetas h3 {
-        color: #777;
-        margin-bottom: 10px;
-    }
+        .tarjetas article {
+            background: white;
+            width: 25%;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
 
-    .tarjetas p {
-        font-size: 28px;
-        font-weight: bold;
-    }
+        .tarjetas h3 {
+            color: #777;
+            margin-bottom: 10px;
+        }
 
-    .graficos {
-        display: flex;
-        gap: 20px;
-        margin-bottom: 25px;
-    }
+        .tarjetas p {
+            font-size: 28px;
+            font-weight: bold;
+        }
 
-    .graficos article {
-        width: 50%;
-        background-color: white;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-    }
+        #nav-analiticas {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            padding: 10px;
+        }
 
-    .graficos h2 {
-        text-align: center;
-        margin-bottom: 20px;
-    }
+        #nav-analiticas button {
+            background: #969696;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
 
-    .grafico {
-        width: 100%;
-        height: 300px;
-    }
+        #nav-analiticas button:hover {
+            background: #555;
+        }
 
-    nav {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
+        #nav-analiticas button.activo {
+            background: #323232;
+        }
 
-    button {
-        padding: 8px 20px;
-        border: none;
-        border-radius: 6px;
-        background-color: #969696;
-        color: white;
-        cursor: pointer;
-    }
+        .graficos {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
 
-    button:hover {
-        background-color: #323232;
-    }
+        .graficos article {
+            width: 50%;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
 
-    .tabla {
-        background-color: white;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-    }
+        .graficos h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    .tabla h2 {
-        margin-bottom: 15px;
-    }
+        .grafico {
+            height: 300px;
+        }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
+        .tabla {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
 
-    th,
-    td {
-        padding: 12px;
-        text-align: center;
-        border-bottom: 1px solid #ddd;
-    }
+        .tabla h2 {
+            margin-bottom: 15px;
+        }
 
-    th {
-        background-color: #f5f5f5;
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-    #tabla {
-        transition: 0.3s;
-    }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
 
-    #tabla.oculto {
-        opacity: 0;
-    }
-</style>
+        th {
+            background: #f5f5f5;
+        }
 
-<main>
-    <section class="tarjetas">
-        <article>
-            <h3>Registros Totales</h3>
+        #tabla {
+            transition: 0.3s;
+        }
 
-            <p>1000</p>
-        </article>
+        #tabla.oculto {
+            opacity: 0;
+        }
 
-        <article>
-            <h3>Entradas Alumnos</h3>
+    </style>
 
-            <p>925</p>
-        </article>
+    <main>
+        <nav id="nav-analiticas">
 
-        <article>
-            <h3>Atrasos</h3>
+            <button id="A" onclick="cambiarCurso('A')">
+                A
+            </button>
 
-            <p>300</p>
-        </article>
+            <button id="B" onclick="cambiarCurso('B')">
+                B
+            </button>
 
-        <article>
-            <h3>Inasistencias</h3>
+            <button id="C" onclick="cambiarCurso('C')">
+                C
+            </button>
 
-            <p>75</p>
-        </article>
-    </section>
-
-    <section class="graficos">
-        <!-- GRAFICO DE TORTA -->
-
-        <article>
-            <h2>Inasistencias</h2>
-
-            <nav>
-                <button onclick="cambiarCurso('A')">A</button>
-
-                <button onclick="cambiarCurso('B')">B</button>
-
-                <button onclick="cambiarCurso('C')">C</button>
-            </nav>
-
-            <figure class="grafico">
-                <canvas id="torta"></canvas>
-            </figure>
-        </article>
-
-        <!-- GRAFICO DE LINEA -->
-
-        <article>
-            <h2>Inasistencias por curso</h2>
-
-            <figure class="grafico">
-                <canvas id="linea"></canvas>
-            </figure>
-        </article>
-    </section>
-
-    <section class="tabla">
-        <h2>Registro de estadísticas</h2>
-
-        <nav>
-            <button onclick="cambiarCurso('A')">A</button>
-
-            <button onclick="cambiarCurso('B')">B</button>
-
-            <button onclick="cambiarCurso('C')">C</button>
         </nav>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Curso</th>
-                    <th>Asistentes</th>
-                    <th>Retiros</th>
-                    <th>Atrasos</th>
-                    <th>Inasistencias</th>
-                </tr>
-            </thead>
 
-            <tbody id="tabla"></tbody>
-        </table>
-    </section>
-</main>
+        <section class="tarjetas">
+
+            <article>
+
+                <h3>Total Alumnos</h3>
+                <p>45</p>
+
+            </article>
+
+            <article>
+
+                <h3>Asistencia total</h3>
+                <p>1000</p>
+
+            </article>
+
+            <article>
+
+                <h3>Atrasos</h3>
+                <p>370</p>
+
+            </article>
+
+            <article>
+
+                <h3>Inasistencias</h3>
+                <p>140</p>
+
+            </article>
+
+        </section>
+
+
+        
+
+
+        <section class="graficos">
+
+            <article>
+
+                <h2>Inasistencias</h2>
+
+                <figure class="grafico">
+
+                    <canvas id="torta"></canvas>
+
+                </figure>
+
+            </article>
+
+
+            <article>
+
+                <h2>Inasistencias por curso</h2>
+
+                <figure class="grafico">
+
+                    <canvas id="linea"></canvas>
+
+                </figure>
+
+            </article>
+
+        </section>
+
+
+        <section class="tabla">
+
+            <h2>Registro de estadísticas</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Curso</th>
+                        <th>Asistentes</th>
+                        <th>Retiros</th>
+                        <th>Atrasos</th>
+                        <th>Inasistencias</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="tabla"></tbody>
+
+            </table>
+
+        </section>
+
+    </main>
