@@ -1,0 +1,355 @@
+<style>
+    .reportes-card {
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 120px);
+        max-height: 100%;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+    }
+
+    .section-header {
+        flex-shrink: 0;
+        padding: 20px 24px;
+        background-color: #f8fafc;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .section-header h2 {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: #1e293b;
+        margin: 0;
+    }
+
+    .section-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 24px;
+        overflow: hidden;
+    }
+
+    .section-body h3 {
+        flex-shrink: 0;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #475569;
+        margin-bottom: 12px;
+    }
+
+    .table-scroll-container {
+        flex: 1;
+        overflow-y: auto;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        background-color: #f8fafc;
+    }
+
+    .table-scroll-container::-webkit-scrollbar {
+        width: 6px;
+    }
+    .table-scroll-container::-webkit-scrollbar-thumb {
+        background-color: #cbd5e1;
+        border-radius: 4px;
+    }
+
+    .tiles-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #f8fafc;
+    }
+
+    .tiles-table tr {
+        transition: background-color 0.15s ease;
+    }
+
+    .tiles-table tr:nth-child(even) { background-color: #ffffff; }
+    .tiles-table tr:nth-child(odd) { background-color: #f8fafc; }
+    .tiles-table tr:hover { background-color: #f1f5f9; }
+
+    .tiles-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid #e2e8f0;
+        font-size: 0.9rem;
+        color: #1e293b;
+        vertical-align: middle;
+    }
+
+    .tiles-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .tile-title-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+    }
+
+    .tile-title-wrapper i {
+        color: #64748b;
+        font-size: 1.1rem;
+    }
+
+    .tile-controls {
+        text-align: right;
+    }
+
+    .download-actions {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: flex-end;
+    }
+
+    .filter-select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        padding: 6px 32px 6px 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        background-color: #ffffff;
+        background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23334155%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 10px auto;
+        color: #334155;
+        font-size: 0.85rem;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .filter-date {
+        padding: 6px 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        background-color: #ffffff;
+        color: #334155;
+        font-size: 0.85rem;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .btn-download {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        border: 1px solid #cbd5e1;
+        background-color: #ffffff;
+        color: #334155;
+        transition: all 0.2s;
+    }
+
+    .btn-download.csv:hover { border-color: #16a34a; color: #15803d; }
+    .btn-download.pdf:hover { border-color: #dc2626; color: #b91c1c; }
+
+    .section-footer {
+        flex-shrink: 0;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 24px;
+        background-color: #f8fafc;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        border: 1px solid transparent;
+    }
+
+    .btn-secondary { background-color: #ffffff; border-color: #cbd5e1; color: #475569; }
+    .btn-primary { background-color: #0f172a; color: #ffffff; }
+</style>
+
+<div class="reportes-card">
+    <header class="section-header">
+        <h2>Descarga de Reportes / Archivos</h2>
+    </header>
+
+    <section class="section-body">
+
+        <h3>Reportes Disponibles</h3>
+
+        <div class="table-scroll-container">
+            <table class="tiles-table">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="tile-title-wrapper">
+                                <i class="bi bi-bar-chart-line-fill"></i>
+                                <span>Asistencia | General</span>
+                            </div>
+                        </td>
+                        <td class="tile-controls">
+                            <div class="download-actions">
+                                <button type="button" class="btn-download csv">
+                                    <i class="bi bi-filetype-csv"></i> CSV
+                                </button>
+                                <button type="button" class="btn-download pdf">
+                                    <i class="bi bi-file-earmark-pdf"></i> PDF
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="tile-title-wrapper">
+                                <i class="bi bi-journal-text"></i>
+                                <span>Asistencia | Curso</span>
+                            </div>
+                        </td>
+                        <td class="tile-controls">
+                            <div class="download-actions">
+                                <select class="filter-select">
+                                    <option value="" disabled selected>Curso</option>
+                                    <option value="7A">7° Básico A</option>
+                                    <option value="7B">7° Básico B</option>
+                                    <option value="7C">7° Básico C</option>
+                                    <option value="8A">8° Básico A</option>
+                                    <option value="8B">8° Básico B</option>
+                                    <option value="8C">8° Básico C</option>
+                                    <option value="1MA">1° Medio A</option>
+                                    <option value="1MB">1° Medio B</option>
+                                    <option value="1MC">1° Medio C</option>
+                                    <option value="2MA">2° Medio A</option>
+                                    <option value="2MB">2° Medio B</option>
+                                    <option value="2MC">2° Medio C</option>
+                                    <option value="3MA">3° Medio A</option>
+                                    <option value="3MB">3° Medio B</option>
+                                    <option value="3MC">3° Medio C</option>
+                                    <option value="4MA">4° Medio A</option>
+                                    <option value="4MB">4° Medio B</option>
+                                    <option value="4MC">4° Medio C</option>
+                                </select>
+
+                                <select class="filter-select" onchange="this.nextElementSibling.style.display = this.value === 'custom' ? 'inline-block' : 'none'">
+                                    <option value="general">Hasta la fecha</option>
+                                    <option value="custom">Seleccionar Fecha</option>
+                                </select>
+                                <input type="date" class="filter-date" style="display: none;" />
+
+                                <button type="button" class="btn-download csv">
+                                    <i class="bi bi-filetype-csv"></i> CSV
+                                </button>
+                                <button type="button" class="btn-download pdf">
+                                    <i class="bi bi-file-earmark-pdf"></i> PDF
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="tile-title-wrapper">
+                                <i class="bi bi-palette"></i>
+                                <span>Asistencia Talleres</span>
+                            </div>
+                        </td>
+                        <td class="tile-controls">
+                            <div class="download-actions">
+                                <select class="filter-select">
+                                    <option value="" disabled selected>Seleccionar Taller</option>
+                                    <option value="todos">Todos los talleres</option>
+                                    <option value="futbol">Taller de Fútbol</option>
+                                    <option value="basquet">Taller de Básquetbol</option>
+                                    <option value="musica">Taller de Música</option>
+                                    <option value="robotica">Taller de Robótica</option>
+                                </select>
+
+                                <button type="button" class="btn-download csv">
+                                    <i class="bi bi-filetype-csv"></i> CSV
+                                </button>
+                                <button type="button" class="btn-download pdf">
+                                    <i class="bi bi-file-earmark-pdf"></i> PDF
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="tile-title-wrapper">
+                                <i class="bi bi-bus-front"></i>
+                                <span>Salidas Pedagógicas</span>
+                            </div>
+                        </td>
+                        <td class="tile-controls">
+                            <div class="download-actions">
+                                <button type="button" class="btn-download csv">
+                                    <i class="bi bi-filetype-csv"></i> CSV
+                                </button>
+                                <button type="button" class="btn-download pdf">
+                                    <i class="bi bi-file-earmark-pdf"></i> PDF
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="tile-title-wrapper">
+                                <i class="bi bi-exclamation-triangle-fill" style="color: #8c1f03;"></i>
+                                <span>Peligro de Repitencia</span>
+                            </div>
+                        </td>
+                        <td class="tile-controls">
+                            <div class="download-actions">
+                                <select class="filter-select">
+                                    <option value="" disabled selected>Seleccionar Curso</option>
+                                    <option value="all">Todos los cursos</option>
+                                    <option value="7A">7° Básico A</option>
+                                    <option value="7B">7° Básico B</option>
+                                    <option value="7C">7° Básico C</option>
+                                    <option value="8A">8° Básico A</option>
+                                    <option value="8B">8° Básico B</option>
+                                    <option value="8C">8° Básico C</option>
+                                    <option value="1MA">1° Medio A</option>
+                                    <option value="1MB">1° Medio B</option>
+                                    <option value="1MC">1° Medio C</option>
+                                    <option value="2MA">2° Medio A</option>
+                                    <option value="2MB">2° Medio B</option>
+                                    <option value="2MC">2° Medio C</option>
+                                    <option value="3MA">3° Medio A</option>
+                                    <option value="3MB">3° Medio B</option>
+                                    <option value="3MC">3° Medio C</option>
+                                    <option value="4MA">4° Medio A</option>
+                                    <option value="4MB">4° Medio B</option>
+                                    <option value="4MC">4° Medio C</option>
+                                </select>
+
+                                <button type="button" class="btn-download csv">
+                                    <i class="bi bi-filetype-csv"></i> CSV
+                                </button>
+                                <button type="button" class="btn-download pdf">
+                                    <i class="bi bi-file-earmark-pdf"></i> PDF
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer class="section-footer">
+        <button type="button" class="btn btn-secondary">Actualizar</button>
+        <button type="button" class="btn btn-primary">Descargar todo</button>
+    </footer>
+</div>
